@@ -7,8 +7,6 @@ use 5.010001;
 use strict;
 use warnings;
 
-require IPC::System::Options;
-
 our $scenario = {
     summary => "Measure the overhead of IPC::System::Options's system()".
         "over CORE::system()",
@@ -22,6 +20,7 @@ our $scenario = {
         },
         {
             name => 'iso-true',
+            module => 'IPC::System::Options',
             code => sub {
                 IPC::System::Options::system({shell=>0}, "/bin/true");
             },
@@ -34,6 +33,7 @@ our $scenario = {
         },
         {
             name => 'iso-perl',
+            module => 'IPC::System::Options',
             code => sub {
                 IPC::System::Options::system({shell=>0}, $^X, "-e1");
             },
