@@ -10,6 +10,9 @@ use warnings;
 our $scenario = {
     summary => "Measure the overhead of IPC::System::Options's system()".
         "over CORE::system()",
+    modules => {
+        'IPC::System::Options' => {version=>0.27},
+    },
     default_precision => 0.001,
     participants => [
         {
